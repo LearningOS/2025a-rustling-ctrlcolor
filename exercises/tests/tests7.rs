@@ -34,9 +34,11 @@
 // Execute `rustlings hint tests7` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+// I AE
 
-fn main() {}
+fn main() {
+    
+}
 
 #[cfg(test)]
 mod tests {
@@ -52,4 +54,5 @@ mod tests {
         let e: u64 = s.parse().unwrap();
         assert!(timestamp >= e && timestamp < e + 10);
     }
+   
 }

@@ -16,6 +16,7 @@ struct Person {
 // We implement the Default trait to use it as a fallback
 // when the provided string is not convertible into a Person object
 impl Default for Person {
+    
     fn default() -> Person {
         Person {
             name: String::from("John"),
@@ -40,10 +41,38 @@ impl Default for Person {
 // If while parsing the age, something goes wrong, then return the default of
 // Person Otherwise, then return an instantiated Person object with the results
 
-// I AM NOT DONE
+// I AM NOE
 
 impl From<&str> for Person {
+    
     fn from(s: &str) -> Person {
+        let default_person=Person::default();
+        if s.len()==0{
+            return default_person;
+        }
+        let parts: Vec<&str> = s.split(',').collect();
+        if parts.len()!=2{
+            return default_person;
+        }
+        let name=parts[0];
+        if name.len()==0{
+            return default_person;
+        }
+        let age_str=parts[1];
+        if age_str.len()==0{
+            return default_person;
+        }
+        match age_str.parse::<usize>(){
+            Ok(age)=>{
+                Person{
+                    name:String::from(name),
+                    age:age,
+                }
+            },
+            Err(_)=>{
+                return default_person;
+            }
+        }
     }
 }
 
